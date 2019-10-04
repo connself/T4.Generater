@@ -1,0 +1,9 @@
+﻿修改 /DbHelper/DbEntity.ttinclude文件中Config的配置信息
+		//数据库名
+        Server = ".";//"127.0.0.1";
+        DbDatabase = "database";
+        Uid = "sa";
+        Pwd = "123";
+        DbType = "MsSql";//MsSql\MySQL	//数据库类型
+        Namespace = "Harbour";//命名空间：生成的类的命名空间
+        Tables = null;//eg:"users,rows,titles"//需要生成的表名：多张表用,分割，为空表示全部表都生成

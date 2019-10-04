@@ -1,0 +1,10 @@
+﻿1、数据库扩展
+	1、在/DbHelper/Db.CS新建**SqlDbHelper.cs
+	2、在新建文件中继承BaseDbHelper类，实现ISqlServerDbTypeMap接口
+	3、在/DbHelper新建**SqlDbHelper.ttinclude
+	4、将新建的.cs里内容拷贝至**SqlDbHelper.ttinclude
+	5、修改DbEntity.cs、DbEntity.ttinclude 中DbFactory类中CreatDb方法，
+	   加入创建实例,在DbEntity.ttinclude头部加入引用
+	   eg:<#@ include file="$(ProjectDir)DbHelper\**SqlDbHelper.ttinclude"  #>
+2、模板扩展
+	1、新建T4.*** 并实现即可

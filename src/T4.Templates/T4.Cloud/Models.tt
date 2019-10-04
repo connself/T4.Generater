@@ -1,0 +1,46 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ output extension=".cs" #>
+<#@ include file="EF.Utility.CS.ttinclude"#>
+<#@ include file="$(ProjectDir)DbHelper\OutputHelper.ttinclude" #>
+<#@ include file="$(ProjectDir)DbHelper\DbEntity.ttinclude"  #>
+
+
+<#
+var manager = Manager.Create(Host, GenerationEnvironment);
+var dbHelper=DbFactory.CreatDb(Config.DbType);
+var dtList= dbHelper.GetDbTables();
+foreach(DbTable dbTable in dtList)
+{   
+	string tableName=dbTable.TableName;
+	manager.StartNewFile(tableName+".cs");#>
+
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace <#=Config.Namespace#>.Models
+{	
+    [Table("<#=tableName#>")]
+	public partial class <#=tableName#>
+    {
+		<# foreach(DbColumn column in dbHelper.GetDbColumns(tableName))  {#>
+
+        /// <summary>
+        /// <#=column.Remark#>
+        /// </summary><#if(column.IsPrimaryKey){#>        
+        [Key]<#}#>        
+        public <#= column.IsNullCSharpType#> <#=column.ColumnName#> { get; set; }
+        <#}#>   
+    }
+}
+
+<#
+
+manager.EndBlock();   
+} 
+manager.Process(true);  
+#>
+
+
+
+
