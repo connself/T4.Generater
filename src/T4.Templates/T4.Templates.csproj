@@ -56,17 +56,6 @@
     <Compile Include="DbHelper\Db.CS\MsSqlDbHelper.cs" />
     <Compile Include="DbHelper\Db.CS\MySqlDbHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="T4.Cloud\Models.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Models.tt</DependentUpon>
-    </Compile>
-    <Compile Include="T4.Cloud\member.cs">
-      <DependentUpon>Models.tt</DependentUpon>
-    </Compile>
-    <Compile Include="T4.Cloud\member_coupons.cs">
-      <DependentUpon>Models.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="DbHelper\DbEntity.ttinclude" />
